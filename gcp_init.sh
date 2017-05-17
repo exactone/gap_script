@@ -89,4 +89,5 @@ conda create --name keras2.0 --clone root
 source activate keras2.0
 pip install keras
 pip install nltk
+pip install word2vec
 pip install tensorflow-gpu
