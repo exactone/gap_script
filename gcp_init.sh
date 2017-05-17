@@ -54,16 +54,6 @@ echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 
 
 echo '=============='
-echo 'install keras, nltk, word2vec'
-echo '=============='
-source ~/.bashrc
-conda create --name keras2.0 --clone root
-source activate keras2.0
-pip install keras
-pip install nltk
-
-
-echo '=============='
 echo 'install CUDA, cuDNN'
 echo '=============='
 sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
@@ -90,3 +80,14 @@ rm -f get_sha_passwd.py
 sed -i "s/#c.NotebookApp.password = ''/c.NotebookApp.password = u'$sha1passwd'/g" ~/.jupyter/jupyter_notebook_config.py 
 sed -i "s/#c.NotebookApp.open_browser = True/c.NotebookApp.open_browser = False/g" ~/.jupyter/jupyter_notebook_config.py
 sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jupyter_notebook_config.py
+
+
+echo '=============='
+echo 'install keras, nltk, word2vec, tensorflow-gpu'
+echo '=============='
+source ~/.bashrc
+conda create --name keras2.0 --clone root
+source activate keras2.0
+pip install keras
+pip install nltk
+pip install tensorflow-gpu
