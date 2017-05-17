@@ -90,4 +90,5 @@ source activate keras2.0
 pip install keras
 pip install nltk
 pip install word2vec
+pip install gensim
 pip install tensorflow-gpu
