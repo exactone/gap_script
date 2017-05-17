@@ -51,7 +51,7 @@ wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-4.3.1-Linu
 #$anaconda_installer -b -p ~/anaconda3
 ~/download/Anaconda3-4.3.1-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
-
+source ~/.bashrc
 
 echo '=============='
 echo 'install CUDA, cuDNN'
@@ -85,7 +85,6 @@ sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jup
 echo '=============='
 echo 'install keras, nltk, word2vec, tensorflow-gpu'
 echo '=============='
-source ~/.bashrc
 conda create --name keras2.0 --clone root
 source activate keras2.0
 pip install keras
