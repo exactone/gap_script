@@ -117,5 +117,6 @@ rm -f nltk_download.py
 echo '=============='
 echo 'install xgboost'
 echo '=============='
-git clone --recursive https://github.com/dmlc/xgboost
-cd xgboost; make -j4
+# https://github.com/dmlc/xgboost
+# https://pypi.python.org/pypi/xgboost/
+pip install xgboost
