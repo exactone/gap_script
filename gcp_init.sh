@@ -120,3 +120,8 @@ echo '=============='
 # https://github.com/dmlc/xgboost
 # https://pypi.python.org/pypi/xgboost/
 pip install xgboost
+source activate keras2.0
+# solve 'GOMP_4.0 not found' bug
+# https://github.com/dmlc/xgboost/issues/1786
+conda install libgcc
+source deactivate keras2.0
