@@ -124,4 +124,9 @@ source activate keras2.0
 # solve 'GOMP_4.0 not found' bug
 # https://github.com/dmlc/xgboost/issues/1786
 conda install libgcc
+# solve 'libstdc++.so.6: version `GLIBCXX_3.4.22' not found' bug
+# https://itbilu.com/linux/management/NymXRUieg.html
+cd /usr/lib32
+rm -rf libstdc++.so.6
+ln -s libstdc++.so.6.0.22 libstdc++.so.6
 source deactivate keras2.0
