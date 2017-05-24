@@ -53,6 +53,7 @@ wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-4.3.1-Linu
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 
+
 echo '=============='
 echo 'install CUDA, cuDNN'
 echo '=============='
@@ -83,12 +84,38 @@ sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jup
 
 
 echo '=============='
-echo 'install keras, nltk, word2vec, tensorflow-gpu'
+echo 'install keras, keras-tqdm, tensorflow-gpu'
 echo '=============='
 conda create --name keras2.0 --clone root
 source activate keras2.0
 pip install keras
-pip install nltk
-pip install word2vec
-pip install gensim
+# https://github.com/bstriner/keras-tqdm
+pip install keras-tqdm
 pip install tensorflow-gpu
+
+
+echo '=============='
+echo 'install kaggle-cli, '
+echo '=============='
+# https://github.com/floydwch/kaggle-cli
+pip install kaggle-cli
+
+
+echo '=============='
+echo 'install gensim, word2vec, nltk'
+echo '=============='
+pip install gensim
+pip install word2vec
+pip install nltk
+touch nltk_download.py
+echo "import nltk" >> nltk_download.py
+echo "nltk.download('all')" >> nltk_download.py
+python nltk_download.py
+rm -f nltk_download.py
+
+
+echo '=============='
+echo 'install xgboost'
+echo '=============='
+git clone --recursive https://github.com/dmlc/xgboost
+cd xgboost; make -j4
