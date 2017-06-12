@@ -64,7 +64,8 @@ wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-4.3.1-Linu
 chmod 755 ~/download/Anaconda*x86_64.sh
 ~/download/Anaconda3-4.3.1-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
-source ~/.bashrc
+export PATH="$HOME/anaconda3/bin:$PATH"
+#source ~/.bashrc
 
 
 #echo '=============='
@@ -137,8 +138,8 @@ conda install libgcc
 # solve 'libstdc++.so.6: version `GLIBCXX_3.4.22' not found' bug
 # https://itbilu.com/linux/management/NymXRUieg.html
 cd ~/anaconda3/envs/keras2.0/lib
-cp /usr/lib32/libstdc++.so.6.0.22 .
+cp /usr/lib32/libstdc++.so.6.0.23 .
 sudo rm -rf libstdc++.so.6
-sudo ln -s libstdc++.so.6.0.22 libstdc++.so.6
+sudo ln -s libstdc++.so.6.0.23 libstdc++.so.6
 cd ~
 source deactivate keras2.0
