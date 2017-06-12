@@ -57,10 +57,12 @@ source ~/.bashrc
 echo '=============='
 echo 'install CUDA, cuDNN'
 echo '=============='
-sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
-sudo chmod a+x /usr/local/bin/gdrive
+
+#sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
+#sudo chmod a+x /usr/local/bin/gdrive
 cd ~/download
-echo "4/OPucxv-Jq9gb6facMQI5UDX4Q93jmkUPRyTdTtLoszY"| gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
+wget https://drive.google.com/open?id=0B3slvjD82cAJQncwMVJWc0oxNlk -O cudnn-8.0-linux-x64-v5.1.tar
+#echo "4/OPucxv-Jq9gb6facMQI5UDX4Q93jmkUPRyTdTtLoszY"| gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
 tar -xf cudnn-8.0-linux-x64-v5.1.tar
 cd ~
 
