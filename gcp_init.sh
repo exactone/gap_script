@@ -43,28 +43,36 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave 
 
 
 echo '=============='
+echo 'install CUDA, cuDNN'
+echo '=============='
+sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
+sudo chmod a+x /usr/local/bin/gdrive
+cd ~/download
+#wget https://drive.google.com/open?id=0B3slvjD82cAJQncwMVJWc0oxNlk -O cudnn-8.0-linux-x64-v5.1.tar
+gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
+tar -xf cudnn-8.0-linux-x64-v5.1.tar
+cd ~
+
+
+echo '=============='
 echo 'install anaconda'
 echo '=============='
 wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
 #anaconda_installer=`ls ~/download/Anaconda*x86_64.sh`
 #chmod 755 $anaconda_installer
 #$anaconda_installer -b -p ~/anaconda3
+chmod 755 ~/download/Anaconda*x86_64.sh
 ~/download/Anaconda3-4.3.1-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 source ~/.bashrc
 
 
-echo '=============='
-echo 'install CUDA, cuDNN'
-echo '=============='
-
-#sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
-#sudo chmod a+x /usr/local/bin/gdrive
-cd ~/download
-wget https://drive.google.com/open?id=0B3slvjD82cAJQncwMVJWc0oxNlk -O cudnn-8.0-linux-x64-v5.1.tar
-#echo "4/OPucxv-Jq9gb6facMQI5UDX4Q93jmkUPRyTdTtLoszY"| gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
-tar -xf cudnn-8.0-linux-x64-v5.1.tar
-cd ~
+#echo '=============='
+#echo 'install google api'
+#echo '=============='
+#sudo apt-get -y install --upgrade python-pip
+#pip install --upgrade pip
+#pip install --upgrade google-api-python-client
 
 
 echo '=============='
