@@ -57,12 +57,12 @@ cd ~
 echo '=============='
 echo 'install anaconda'
 echo '=============='
-wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+wget -t0 -c -P ~/download https://repo.continuum.io/archive/Anaconda3-5.0.0-Linux-x86_64.sh
 #anaconda_installer=`ls ~/download/Anaconda*x86_64.sh`
 #chmod 755 $anaconda_installer
 #$anaconda_installer -b -p ~/anaconda3
 chmod 755 ~/download/Anaconda*x86_64.sh
-~/download/Anaconda3-4.3.1-Linux-x86_64.sh -b -p ~/anaconda3
+~/download/Anaconda3-5.0.0-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 export PATH="$HOME/anaconda3/bin:$PATH"
 #source ~/.bashrc
@@ -97,7 +97,7 @@ sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jup
 echo '=============='
 echo 'install keras, keras-tqdm, tensorflow-gpu'
 echo '=============='
-conda create --name keras2.0 --clone root
+conda create --name keras2.0 anaconda
 source activate keras2.0
 pip install keras
 # https://github.com/bstriner/keras-tqdm
