@@ -3,7 +3,7 @@ echo 'setting swap'
 echo '=============='
 id=`whoami`
 sudo passwd
-su 
+#su 
 
 
 # count 依自己的設定設置
@@ -14,7 +14,7 @@ chmod 0644 /swapfile
 # 啟動 swap
 swapon /swapfile
 echo "/swapfile    swap    swap    defaults    0 0" >> /etc/fstab
-su $id
+#su $id
 cd ~
 
 
@@ -103,7 +103,7 @@ chmod 755 ~/download/Anaconda*x86_64.sh
 ~/download/Anaconda3-5.0.0-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 export PATH="$HOME/anaconda3/bin:$PATH"
-source ~/.bashrc
+
 
 
 #echo '=============='
@@ -135,6 +135,7 @@ sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jup
 echo '=============='
 echo 'install keras, keras-tqdm, tensorflow-gpu'
 echo '=============='
+source ~/.bashrc
 yes Y | conda create --name keras2.0 anaconda
 source activate keras2.0
 pip install keras
