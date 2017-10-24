@@ -1,4 +1,24 @@
 echo '=============='
+echo 'setting swap'
+echo '=============='
+id=`whoami`
+sudo passwd
+su 
+
+
+# count 依自己的設定設置
+sudo dd if=/dev/zero of=/swapfile bs=1M count=8192
+# 格式化 swap
+sudo mkswap /swapfile
+chmod 0644 /swapfile
+# 啟動 swap
+swapon /swapfile
+echo "/swapfile    swap    swap    defaults    0 0" >> /etc/fstab
+su $id
+cd ~
+
+
+echo '=============='
 echo 'SSL authentication, manual enter needed'
 echo '=============='
 mkdir ~/ssl
@@ -23,7 +43,7 @@ echo '=============='
 echo 'install cuda'
 echo '=============='
 cd ~/download
-sudo passwd
+
 # remove cuda 9 and clean apt cache
 #sudo apt-get --purge remove cuda
 #sudo apt autoremove
