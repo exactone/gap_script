@@ -22,14 +22,20 @@ sudo apt-get install -y p7zip-full
 echo '=============='
 echo 'install cuda'
 echo '=============='
+cd ~/download
+sudo passwd
 # remove cuda 9 and clean apt cache
-sudo apt-get --purge remove cuda
-sudo apt autoremove
-sudo apt-get clean
+#sudo apt-get --purge remove cuda
+#sudo apt autoremove
+#sudo apt-get clean
 
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 sudo yes y | dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-sudo yes Y | apt-get update && sudo apt-get install cuda-8-0
+sudo yes Y | apt-get update 
+sudo yes Y | apt-get install cuda-8-0
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}} 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+
 
 echo '=============='
 echo 'install gcc'
@@ -52,14 +58,16 @@ echo '=============='
 sudo cp gcp_script/gdrive-linux-x64 /usr/local/bin/gdrive
 sudo chmod a+x /usr/local/bin/gdrive
 cd ~/download
-#wget https://drive.google.com/open?id=0B3slvjD82cAJQncwMVJWc0oxNlk -O cudnn-8.0-linux-x64-v5.1.tar
-gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
-tar -xf cudnn-8.0-linux-x64-v5.1.tar
+#wget https://drive.google.com/open?id=0B3slvjD82cAJX05EdzVQUkZjdzQ -O cudnn-8.0-linux-x64-v5.1.tar
+gdrive download 0B3slvjD82cAJX05EdzVQUkZjdzQ
+tar -xf cudnn-8.0-linux-x64-v6.0.tar
 
 # copy libs to /usr/local/cuda folder
 sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+sudo apt-get install libcupti-dev
 cd ~
 
 
