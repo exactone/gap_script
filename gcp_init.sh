@@ -22,10 +22,14 @@ sudo apt-get install -y p7zip-full
 echo '=============='
 echo 'install cuda'
 echo '=============='
+# remove cuda 9 and clean apt cache
+sudo apt-get --purge remove cuda
+sudo apt autoremove
+sudo apt-get clean
+
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 sudo yes y | dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-sudo apt-get update && sudo apt-get install cuda
-
+sudo yes Y | apt-get update && sudo apt-get install cuda-8-0
 
 echo '=============='
 echo 'install gcc'
@@ -51,7 +55,13 @@ cd ~/download
 #wget https://drive.google.com/open?id=0B3slvjD82cAJQncwMVJWc0oxNlk -O cudnn-8.0-linux-x64-v5.1.tar
 gdrive download 0B3slvjD82cAJQncwMVJWc0oxNlk
 tar -xf cudnn-8.0-linux-x64-v5.1.tar
+
+# copy libs to /usr/local/cuda folder
+sudo cp -P cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 cd ~
+
 
 
 echo '=============='
