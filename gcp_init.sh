@@ -65,7 +65,7 @@ chmod 755 ~/download/Anaconda*x86_64.sh
 ~/download/Anaconda3-5.0.0-Linux-x86_64.sh -b -p ~/anaconda3
 echo "export PATH=\"\$HOME/anaconda3/bin:\$PATH\"" >> ~/.bashrc
 export PATH="$HOME/anaconda3/bin:$PATH"
-#source ~/.bashrc
+source ~/.bashrc
 
 
 #echo '=============='
@@ -79,7 +79,7 @@ export PATH="$HOME/anaconda3/bin:$PATH"
 echo '=============='
 echo 'set jupyter notebook server'
 echo '=============='
-echo "y" | jupyter notebook --generate-config
+yes y | jupyter notebook --generate-config
 sedhome=$(echo $HOME | sed 's/\//\\\//g')
 sed -i "s/#c.NotebookApp.certfile = ''/c.NotebookApp.certfile = '$sedhome\/ssl\/mycert.pem'/g"  ~/.jupyter/jupyter_notebook_config.py 
 sed -i "s/#c.NotebookApp.keyfile = ''/c.NotebookApp.keyfile = '$sedhome\/ssl\/mykey.key'/g"  ~/.jupyter/jupyter_notebook_config.py
@@ -97,7 +97,7 @@ sed -i "s/#c.NotebookApp.port = 8888/c.NotebookApp.port = 9999/g" ~/.jupyter/jup
 echo '=============='
 echo 'install keras, keras-tqdm, tensorflow-gpu'
 echo '=============='
-conda create --name keras2.0 anaconda
+yes Y | conda create --name keras2.0 anaconda
 source activate keras2.0
 pip install keras
 # https://github.com/bstriner/keras-tqdm
