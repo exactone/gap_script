@@ -55,7 +55,8 @@ sudo apt-get update -y
 yes Y | sudo apt-get install cuda-8-0
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}} 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
-
+echo "export PATH=/usr/local/cuda-8.0/bin\${PATH:+:\${PATH}}" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/cuda/lib64" >> ~/.bashrc
 
 #echo '=============='
 #echo 'install gcc'
